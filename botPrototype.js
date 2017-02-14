@@ -8,8 +8,8 @@ var readline = require('readline');
 let targetedGuild = "252525368865456130";
 let targetGuild = "254746488993742850";
 let targetChannel = "274085775178596352";
-let targetGuild2 = "218766410837524491";
-let targetChannel2 = "275824155990163458";
+let targetGuild2 = "261614766227718146";
+let targetChannel2 = "280912447106318336";
 
 
 var botEnable = true;
