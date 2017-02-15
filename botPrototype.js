@@ -32,12 +32,9 @@ bot.on("message", msg => {
     }
   }
   if (botEnable == true){
-    if (msg.mentions.roles.first()){
-      if (bot.guilds.get(targetGuild2).roles.get(msg.mentions.roles.first().id) return;
-    }
     if (msg.guild.id == targetedGuild){
       bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
-      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
+      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("```\n" + "[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content + "\n```");
       if (msg.attachments.first()){
         bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.attachments.first().url);
         sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.attachments.first().url);
