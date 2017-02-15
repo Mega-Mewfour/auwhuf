@@ -33,7 +33,7 @@ bot.on("message", msg => {
   }
   if (botEnable == true){
     if (msg.mentions.roles.first()){
-      if (bot.guilds.get(targetGuild2).roles.get(msg.mentions.roles.first().id){
+      if (bot.guilds.get(targetGuild2).roles.get(msg.mentions.roles.first().id)){
           return;
       }
     }
