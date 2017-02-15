@@ -39,7 +39,7 @@ bot.on("message", msg => {
     let filtered = noMention(msg.content);
     if (msg.guild.id == targetedGuild){
       bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
-      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + filtered");
+      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + filtered);
       if (msg.attachments.first()){
         bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.attachments.first().url);
         sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.attachments.first().url);
