@@ -15,7 +15,8 @@ let targetChannel2 = "280912447106318336";
 var botEnable = true;
 
 var noMention = function(text){
-  return text.split("").map((c)=>{c == "@" ? c = "" : c;}).join("");
+  let array = text.split("").map((c)=>{c == "@" ? c = "" : c;});
+  return array.join("");
 }
 
 bot.on('ready', () => {
