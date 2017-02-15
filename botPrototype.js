@@ -14,6 +14,10 @@ let targetChannel2 = "280912447106318336";
 
 var botEnable = true;
 
+var noMention = function(text){
+  return text.split("").map((c)=>{c == "@" ? "" : c;}).join("");
+}
+
 bot.on('ready', () => {
   console.log('I am ready!');
 });
@@ -32,12 +36,10 @@ bot.on("message", msg => {
     }
   }
   if (botEnable == true){
-    if (msg.mentions.roles){
-      return;
-    }
+    let filtered = noMention(msg.content);
     if (msg.guild.id == targetedGuild){
       bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
-      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("```\n" + "[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content + "\n```");
+      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + filtered");
       if (msg.attachments.first()){
         bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.attachments.first().url);
         sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.attachments.first().url);
