@@ -32,9 +32,9 @@ bot.on('error', e => {
 bot.on("message", msg => {
   if (msg.guild.id == targetedGuild){
     if (msg.content.toLowerCase().includes("mega") || msg.content.toLowerCase().includes("mewthree") || msg.content.toLowerCase().includes("nebby") || msg.content.toLowerCase().includes("nobby") || msg.content.toLowerCase().includes("azure") || msg.content.toLowerCase().includes("poosi") || msg.content.toLowerCase().includes("trapomine") || msg.content.toLowerCase().includes("mew") || msg.content.toLowerCase().includes("nebula")){
-      bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
+      sender.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
       sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
-      bot.users.get("197592250354499584").sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
+      sender.users.get("197592250354499584").sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
     }
   }
   if (botEnable == true){
@@ -66,5 +66,5 @@ bot.on("message", msg => {
 }
 });
 
-bot.login("MjcwMDU5NDkyNDUwNzYyNzUy.C1yg0g.45lkBqDe7hJ6JNvyvagE42UDC-A");
+bot.login("MjY1MDE1NjI0MjUyNjUzNTY4.C4T0Bw.jETDBQns3fdPcbRFuyjtfd4KjtY");
 sender.login("Mjc3NDkwMjI4MTc0OTEzNTM3.C3eg9w.VhehY4E_QZ-_2fAn_eD29LSpl5w");
