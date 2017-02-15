@@ -33,7 +33,9 @@ bot.on("message", msg => {
   }
   if (botEnable == true){
     if (msg.mentions.roles.first()){
-      if (bot.guilds.get(targetGuild2).roles.get(msg.mentions.roles.first().id) return;
+      if (bot.guilds.get(targetGuild2).roles.get(msg.mentions.roles.first().id){
+          return;
+      }
     }
     if (msg.guild.id == targetedGuild){
       bot.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
