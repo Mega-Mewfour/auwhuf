@@ -31,8 +31,17 @@ bot.on('error', e => {
 });
 
 bot.on("message", msg => {
+  if (msg.content == "??datadump"){
+    if (!msg.author == bot.user) return;
+    for (let i = 0; i < 24; i++){
+      if (activityLog[i]){
+        msg.channel.sendMessage(activityLog[i]);
+      }
+    }
+  }
   if (msg.author.bot) return;
   if (!msg.guild) return;
+  if (!msg.guild.id == targetedGuild) return;
   let d = new Date();
   if (!activityLog[d.getHours()]){
     if (!activityLog[d.getHours()][msg.channel.name]){
@@ -47,14 +56,7 @@ bot.on("message", msg => {
       activityLog[d.getHours()][msg.channel.name].messages++;
     }
   }
-  if (!msg.author == bot.user) return;
-  if (msg.content == "??datadump"){
-    for (let i = 0; i < 24; i++){
-      if (activityLog[i]){
-        msg.channel.sendMessage(activityLog[i]);
-      }
-    }
-  }
+  
   
   
   
