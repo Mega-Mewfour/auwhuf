@@ -44,7 +44,7 @@ bot.on("message", msg => {
   if (!msg.guild.id == targetedGuild) return;
   let d = new Date();
   if (!activityLog[d.getHours().toString()]){
-      activityLog[d.getHours().toString()][msg.channel.name] = {messages: 1};
+      activityLog[d.getHours().toString()] = {msg.channel.name: {messages: 1}};
   }else{
     if (!activityLog[d.getHours().toString()][msg.channel.name]){
       activityLog[d.getHours().toString()][msg.channel.name] = {messages: 1};
