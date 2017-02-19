@@ -12,6 +12,7 @@ let targetedGuild = "252525368865456130";
 //let targetChannel2 = "280912447106318336";
 
 let activityLog = {};
+let userLog = {};
 
 var botEnable = true;
 
@@ -37,7 +38,7 @@ bot.on("message", msg => {
       if (activityLog[i.toString()]){
         Object.keys(activityLog[i.toString()]).forEach(function(key,index) {
           msg.channel.sendMessage(key + ": " + activityLog[i.toString()][key].messages);
-        }
+        });
       }
     }
   }
@@ -57,6 +58,17 @@ bot.on("message", msg => {
     }
   }
   
+  if (!userLog[d.getHours().toString()]){
+      userLog[d.getHours().toString()] = {};
+      userLog[d.getHours().toString()][msg.author.username] = {messages: 1};
+  }else{
+    if (!userLog[d.getHours()][msg.author.username]){
+      userLog[d.getHours().toString()] = {};
+      userLog[d.getHours().toString()][msg.author.username] = {messages: 1};
+    }else{
+      userLog[d.getHours().toString()][msg.author.username].messages++;
+    }
+  }
   
   
   
