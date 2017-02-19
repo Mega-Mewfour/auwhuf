@@ -11,7 +11,7 @@ let targetedGuild = "252525368865456130";
 //let targetGuild2 = "261614766227718146";
 //let targetChannel2 = "280912447106318336";
 
-let activityLog = [];
+let activityLog = {};
 
 var botEnable = true;
 
@@ -34,8 +34,8 @@ bot.on("message", msg => {
   if (msg.content == "??datadump"){
     if (!msg.author == bot.user) return;
     for (let i = 0; i < 24; i++){
-      if (activityLog[i]){
-        msg.channel.sendMessage(activityLog[i]);
+      if (activityLog[i.toString()]){
+        msg.channel.sendMessage(activityLog[i.toString()]);
       }
     }
   }
@@ -43,13 +43,15 @@ bot.on("message", msg => {
   if (!msg.guild) return;
   if (!msg.guild.id == targetedGuild) return;
   let d = new Date();
-  if (!activityLog[d.getHours()]){
-      activityLog[d.getHours()][msg.channel.name] = {messages: 1};
+  if (!activityLog[d.getHours().toString()]){
+      activityLog[d.getHours().toString()] = {};
+      activityLog[d.getHours().toString()][msg.channel.name] = {messages: 1};
   }else{
     if (!activityLog[d.getHours()][msg.channel.name]){
-      activityLog[d.getHours()][msg.channel.name] = {messages: 1};
+      activityLog[d.getHours().toString()] = {};
+      activityLog[d.getHours().toString()][msg.channel.name] = {messages: 1};
     }else{
-      activityLog[d.getHours()][msg.channel.name].messages++;
+      activityLog[d.getHours().toString()][msg.channel.name].messages++;
     }
   }
   
