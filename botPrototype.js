@@ -35,7 +35,9 @@ bot.on("message", msg => {
     if (!msg.author == bot.user) return;
     for (let i = 0; i < 24; i++){
       if (activityLog[i.toString()]){
-        msg.channel.sendMessage(activityLog[i.toString()]);
+        Object.keys(activityLog[i.toString()]).forEach(function(key,index) {
+          msg.channel.sendMessage(key + ": " + activityLog[i.toString()][key].messages);
+        }
       }
     }
   }
