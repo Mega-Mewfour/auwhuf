@@ -32,26 +32,39 @@ bot.on('error', e => {
 });
 
 bot.on("message", msg => {
-  if (msg.content == "??datadump"){
+  if (msg.content == "??activitydump"){
     if (!msg.author == bot.user) return;
     for (let i = 0; i < 24; i++){
       if (activityLog[i.toString()]){
+        msg.channel.sendMessage(i + ": ");
         Object.keys(activityLog[i.toString()]).forEach(function(key,index) {
-          msg.channel.sendMessage(key + ": " + activityLog[i.toString()][key].messages);
+          msg.channel.sendMessage("     " + key + ": " + activityLog[i.toString()][key].messages);
         });
       }
     }
   }
+  
+  if (msg.content == "??userdump"){
+    if (!msg.author == bot.user) return;
+    for (let i = 0; i < 24; i++){
+      if (userLog[i.toString()]){
+        msg.channel.sendMessage(i + ": ");
+        Object.keys(userLog[i.toString()]).forEach(function(key,index) {
+          msg.channel.sendMessage("     " + key + ": " + userLog[i.toString()][key].messages);
+        });
+      }
+    }
+  }
+  
   if (msg.author.bot) return;
   if (!msg.guild) return;
-  if (!msg.guild.id == targetedGuild) return;
+  if (msg.guild.id == targetedGuild){
   let d = new Date();
   if (!activityLog[d.getHours().toString()]){
       activityLog[d.getHours().toString()] = {};
       activityLog[d.getHours().toString()][msg.channel.name] = {messages: 1};
   }else{
     if (!activityLog[d.getHours()][msg.channel.name]){
-      activityLog[d.getHours().toString()] = {};
       activityLog[d.getHours().toString()][msg.channel.name] = {messages: 1};
     }else{
       activityLog[d.getHours().toString()][msg.channel.name].messages++;
@@ -63,13 +76,12 @@ bot.on("message", msg => {
       userLog[d.getHours().toString()][msg.author.username] = {messages: 1};
   }else{
     if (!userLog[d.getHours()][msg.author.username]){
-      userLog[d.getHours().toString()] = {};
       userLog[d.getHours().toString()][msg.author.username] = {messages: 1};
     }else{
       userLog[d.getHours().toString()][msg.author.username].messages++;
     }
   }
-  
+  }
   
   
   
