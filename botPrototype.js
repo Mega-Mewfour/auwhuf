@@ -6,11 +6,12 @@ var readline = require('readline');
 
 
 let targetedGuild = "252525368865456130";
-let targetGuild = "254746488993742850";
-let targetChannel = "274085775178596352";
-let targetGuild2 = "261614766227718146";
-let targetChannel2 = "280912447106318336";
+//let targetGuild = "254746488993742850";
+//let targetChannel = "274085775178596352";
+//let targetGuild2 = "261614766227718146";
+//let targetChannel2 = "280912447106318336";
 
+let activityLog;
 
 var botEnable = true;
 
@@ -30,11 +31,39 @@ bot.on('error', e => {
 });
 
 bot.on("message", msg => {
+  if (msg.author.bot) return;
   if (!msg.guild) return;
-  if (msg.guild.id == targetedGuild){
+  let d = new Date();
+  if (!activityLog[d.getHours()]){
+    if (!activityLog[d.getHours()][msg.channel.name]){
+      activityLog[d.getHours()][msg.channel.name].messages = 1;
+    }else{
+      activityLog[d.getHours()][msg.channel.name].messages++;
+    }
+  }else{
+    if (!activityLog[d.getHours()][msg.channel.name]){
+      activityLog[d.getHours()][msg.channel.name].messages = 1;
+    }else{
+      activityLog[d.getHours()][msg.channel.name].messages++;
+    }
+  }
+  if (!msg.author == bot.user) return;
+  if (msg.content == "??datadump"){
+    for (let i = 0; i < 24; i++){
+      if (activityLog[i]){
+        msg.channel.sendMessage(activityLog[i]);
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  /*if (msg.guild.id == targetedGuild){
     if (msg.content.toLowerCase().includes("mega") || msg.content.toLowerCase().includes("mewthree") || msg.content.toLowerCase().includes("nebby") || msg.content.toLowerCase().includes("nobby") || msg.content.toLowerCase().includes("azure") || msg.content.toLowerCase().includes("poosi") || msg.content.toLowerCase().includes("trapomine") || msg.content.toLowerCase().includes("mew") || msg.content.toLowerCase().includes("nebula")){
-/*      sender.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
-*/      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
+      sender.guilds.get(targetGuild).channels.get(targetChannel).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
+      sender.guilds.get(targetGuild2).channels.get(targetChannel2).sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
       sender.users.get("197592250354499584").sendMessage("[" + msg.channel.name + "]: " + msg.author.username + ": " + msg.content);
     }
   }
@@ -65,7 +94,10 @@ bot.on("message", msg => {
     msg.channel.sendMessage("Bot disabled!");
   }
 }
+*/
 });
 
-bot.login("MjY1MDE1NjI0MjUyNjUzNTY4.C4T0Bw.jETDBQns3fdPcbRFuyjtfd4KjtY");
-sender.login("Mjc3NDkwMjI4MTc0OTEzNTM3.C3eg9w.VhehY4E_QZ-_2fAn_eD29LSpl5w");
+bot.login("MjgwMjM1OTUxNzI3MzEyODk2.C4rWIQ.I9ffiBGWSmHZ6M7zS1772AMz93c");
+
+//bot.login("MjY1MDE1NjI0MjUyNjUzNTY4.C4T0Bw.jETDBQns3fdPcbRFuyjtfd4KjtY");
+//sender.login("Mjc3NDkwMjI4MTc0OTEzNTM3.C3eg9w.VhehY4E_QZ-_2fAn_eD29LSpl5w");
