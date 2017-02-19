@@ -43,17 +43,17 @@ bot.on("message", msg => {
   if (!msg.guild) return;
   if (!msg.guild.id == targetedGuild) return;
   let d = new Date();
-  if (!activityLog[d.getHours()]){
-    if (!activityLog[d.getHours()][msg.channel.name]){
-      activityLog[d.getHours()][msg.channel.name].messages = 1;
+  if (!activityLog[d.getHours().toString()]){
+    if (!activityLog[d.getHours().toString()][msg.channel.name]){
+      activityLog[d.getHours().toString()][msg.channel.name].messages = 1;
     }else{
-      activityLog[d.getHours()][msg.channel.name].messages++;
+      activityLog[d.getHours().toString()][msg.channel.name].messages++;
     }
   }else{
-    if (!activityLog[d.getHours()][msg.channel.name]){
-      activityLog[d.getHours()][msg.channel.name].messages = 1;
+    if (!activityLog[d.getHours().toString()][msg.channel.name]){
+      activityLog[d.getHours().toString()][msg.channel.name].messages = 1;
     }else{
-      activityLog[d.getHours()][msg.channel.name].messages++;
+      activityLog[d.getHours().toString()][msg.channel.name].messages++;
     }
   }
   
