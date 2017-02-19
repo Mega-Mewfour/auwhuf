@@ -11,7 +11,7 @@ let targetedGuild = "252525368865456130";
 //let targetGuild2 = "261614766227718146";
 //let targetChannel2 = "280912447106318336";
 
-let activityLog;
+let activityLog = {};
 
 var botEnable = true;
 
