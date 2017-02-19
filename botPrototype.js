@@ -46,9 +46,6 @@ bot.on("message", msg => {
   if (!activityLog[d.getHours().toString()]){
     if (!activityLog[d.getHours().toString()][msg.channel.name]){
       activityLog[d.getHours().toString()][msg.channel.name].messages = 1;
-    }else{
-      activityLog[d.getHours().toString()][msg.channel.name].messages++;
-    }
   }else{
     if (!activityLog[d.getHours().toString()][msg.channel.name]){
       activityLog[d.getHours().toString()][msg.channel.name].messages = 1;
