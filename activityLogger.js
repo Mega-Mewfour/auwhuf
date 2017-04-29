@@ -123,7 +123,7 @@ bot.on("message", msg => {
 */
 });
 
-bot.login("MjgwMjM1OTUxNzI3MzEyODk2.C4rWIQ.I9ffiBGWSmHZ6M7zS1772AMz93c");
+bot.login("");
 
-//bot.login("MjY1MDE1NjI0MjUyNjUzNTY4.C4T0Bw.jETDBQns3fdPcbRFuyjtfd4KjtY");
-//sender.login("Mjc3NDkwMjI4MTc0OTEzNTM3.C3eg9w.VhehY4E_QZ-_2fAn_eD29LSpl5w");
+//bot.login("");
+//sender.login("");
